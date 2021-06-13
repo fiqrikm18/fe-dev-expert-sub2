@@ -3740,6 +3740,11 @@
   dependencies:
     "postcss" "^7.0.14"
 
+"idb@^6.1.2":
+  "integrity" "sha512-1DNDVu3yDhAZkFDlJf0t7r+GLZ248F5pTAtA7V0oVG3yjmV125qZOx3g0XpAEkGZVYQiFDAsSOnGet2bhugc3w=="
+  "resolved" "https://registry.npmjs.org/idb/-/idb-6.1.2.tgz"
+  "version" "6.1.2"
+
 "ieee754@^1.1.4":
   "integrity" "sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA=="
   "resolved" "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz"

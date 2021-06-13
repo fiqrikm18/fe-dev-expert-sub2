@@ -1,7 +1,7 @@
-import RestaurantResource from '../../data/restaurant-resource';
+import Database from '../../data/database';
 import { restaurantCard } from '../../templates/restaurant-templates';
 
-const Home = {
+const Favorite = {
   async render() {
     return `
       <div class="hero__wrapper">
@@ -12,21 +12,25 @@ const Home = {
       </div>
     
       <div class="content__header">
-        <p>Explore Restaurant</p>
+        <p>Favorite Restaurant</p>
       </div>
       <div id="content_data" class="content__data"></div>
     `;
   },
 
   async afterRender() {
-    const data = RestaurantResource.restaurantList();
+    const data = Database.getAllRestaurant();
     const contentContainer = document.getElementById('content_data');
-    data.then(result => {
-      result.restaurants.forEach(restaurant => {
-        contentContainer.innerHTML += restaurantCard(restaurant);
-      });
+    data.then((res) => {
+      if (res.length < 1) {
+        contentContainer.innerHTML += `<p style="text-align: center; font-weight: bold; width: 100%; height: 100vh;">Anda Belum meiliki Restaurant Favorit.</p>`;
+      } else {
+        res.forEach((favorite) => {
+          contentContainer.innerHTML += restaurantCard(favorite);
+        });
+      }
     });
   },
 };
 
-export default Home;
+export default Favorite;

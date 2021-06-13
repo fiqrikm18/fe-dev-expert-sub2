@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import config from '../globals/config';
 import { outerHTML } from '../utils/helper';
 
@@ -7,8 +8,7 @@ import { outerHTML } from '../utils/helper';
  * @param restaurant
  * @returns {string}
  */
-const restaurantCard = (restaurant) =>
-  `
+const restaurantCard = (restaurant) => `
   <div class="card" style="margin: 0 1rem">
     <div class="card__header">
       <img src="${config.image_medium_url}${restaurant.pictureId}" alt="${restaurant.name}}">
@@ -37,19 +37,45 @@ const restaurantCard = (restaurant) =>
  * @returns {string}
  */
 function restaurantDetail(restaurant) {
+  console.log(restaurant);
   const categoryElement = document.createElement('div');
   categoryElement.id = 'category-container';
   categoryElement.classList.add('category__container');
 
-  const foodsElement = document.createTextNode('div');
+  const foodsElement = document.createElement('div');
   foodsElement.id = 'foods-menus-container';
 
-  const drinksElement = document.createTextNode('div');
+  const drinksElement = document.createElement('div');
   drinksElement.id = 'drinks-menus-container';
 
-  [...restaurant.categories].forEach(category => {
+  const reviewElement = document.createElement('div');
+  reviewElement.id = 'review-container';
+
+  [...restaurant.categories].forEach((category) => {
     const p = `<p class="category__item">${category.name}</p>`;
     categoryElement.innerHTML += p;
+  });
+
+  [...restaurant.menus.drinks].forEach((drink) => {
+    const p = `<p class="menu__item">${drink.name}</p>`;
+    drinksElement.innerHTML += p;
+  });
+
+  [...restaurant.menus.foods].forEach((food) => {
+    const p = `<p class="menu__item">${food.name}</p>`;
+    foodsElement.innerHTML += p;
+  });
+
+  [...restaurant.customerReviews].forEach((userReview) => {
+    const review = `
+     <div class="review__item">
+     <p style="color: #542e71">${userReview.name}</p>
+     <span style="font-size: 10pt; color: #a799b7">${userReview.date}</span>
+     <hr>
+     <p style="margin-top: 1rem">${userReview.review}</p> 
+    </div>
+    `;
+    reviewElement.innerHTML += review;
   });
 
   return `
@@ -90,10 +116,22 @@ function restaurantDetail(restaurant) {
       
       <div class="restaurant__menu__container">
         <p class="menu__title"><strong>Restaurant Menus</strong></p>
-        <div>
-        
+        <div class="menu__container">
+          <div class="menu__wrapper">
+            <p>Drinks</p>
+            ${outerHTML(drinksElement)}
+          </div>
+          <div class="menu__wrapper">
+            <p>Foods</p>
+            ${outerHTML(foodsElement)}
+          </div>
         </div>
       </div>
+    </div>
+    
+    <div class="user__review__container">
+        <p style="color: #542e71; font-weight: bold; text-align: center; margin: 1rem 0.5rem 0.5rem 0.5rem;">Customer Review</p>
+        ${outerHTML(reviewElement)}
     </div>
   `;
 }

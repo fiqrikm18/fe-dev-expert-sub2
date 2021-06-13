@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import DrawerInitiator from '../utils/drawer-initiator';
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
@@ -6,7 +7,7 @@ export default class App {
   constructor({
     button,
     drawer,
-    content
+    content,
   }) {
     this._buttton = button;
     this._drawer = drawer;
@@ -19,7 +20,7 @@ export default class App {
     DrawerInitiator.init({
       button: this._buttton,
       drawer: this._drawer,
-      content: this._drawer
+      content: this._drawer,
     });
   }
 

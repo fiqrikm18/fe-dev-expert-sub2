@@ -195,7 +195,49 @@ footer {
     min-width: 80px;
     border-radius: 1rem;
     text-align: center;
-    border: 1px solid #d29a00;
+}
+
+.menu__item {
+    background: var(--alternative-color);
+    color: white;
+    text-align: center;
+    margin: 0.5rem;
+}
+
+.menu__container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.menu__wrapper {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    width: 70%;
+}
+
+.menu__wrapper {
+    margin: 1rem;
+}
+
+.menu__wrapper > p {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+#foods-menus-container > p {
+    padding: 0.5rem;
+}
+
+#drinks-menus-container > p {
+    padding: 0.5rem;
+}
+
+.review__item {
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 1rem;
+    margin: 0.5rem 1rem;
 }
 
 .accordion > input[type="checkbox"] {
@@ -267,6 +309,23 @@ footer {
 }
 
 @media screen and (max-width: 500px) {
+    .menu__container {
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu__wrapper {
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        /* align-items: center; */
+        width: 80%;
+    }
+
     .skip-content {
         top: -100px;
         left: 0;

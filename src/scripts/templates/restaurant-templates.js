@@ -37,7 +37,6 @@ const restaurantCard = (restaurant) => `
  * @returns {string}
  */
 function restaurantDetail(restaurant) {
-  console.log(restaurant);
   const categoryElement = document.createElement('div');
   categoryElement.id = 'category-container';
   categoryElement.classList.add('category__container');

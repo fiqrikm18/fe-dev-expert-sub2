@@ -5,6 +5,6 @@ const swRegister = async () => {
     await runtime.register();
     return;
   }
-}
+};
 
 export default swRegister;

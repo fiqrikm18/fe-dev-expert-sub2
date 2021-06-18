@@ -21,8 +21,8 @@ const Home = {
   async afterRender() {
     const data = RestaurantResource.restaurantList();
     const contentContainer = document.getElementById('content_data');
-    data.then(result => {
-      result.restaurants.forEach(restaurant => {
+    data.then((result) => {
+      result.restaurants.forEach((restaurant) => {
         contentContainer.innerHTML += restaurantCard(restaurant);
       });
     });

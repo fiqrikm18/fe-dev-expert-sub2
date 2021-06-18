@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import config from '../globals/config';
-import { outerHTML } from '../utils/helper';
+import outerHTML from '../utils/helper';
 
 /**
  * show restaurant overview as card
@@ -39,7 +39,6 @@ const restaurantCard = (restaurant) => `
 function restaurantDetail(restaurant) {
   const categoryElement = document.createElement('div');
   categoryElement.id = 'category-container';
-  categoryElement.classList.add('category__container');
 
   const foodsElement = document.createElement('div');
   foodsElement.id = 'foods-menus-container';
@@ -51,7 +50,7 @@ function restaurantDetail(restaurant) {
   reviewElement.id = 'review-container';
 
   [...restaurant.categories].forEach((category) => {
-    const p = `<p class="category__item">${category.name}</p>`;
+    const p = `<p>${category.name}</p>`;
     categoryElement.innerHTML += p;
   });
 
@@ -94,11 +93,7 @@ function restaurantDetail(restaurant) {
       </div>
     </div>
     
-    <div style="margin: 1rem">
-      <div>
-        ${outerHTML(categoryElement)}
-      </div>
-      
+    <div style="margin: 1rem">      
       <div>
         <section class="accordion">
           <input type="checkbox" name="collapse" id="handle1" checked="checked">
@@ -107,6 +102,7 @@ function restaurantDetail(restaurant) {
           </h2>
           <div class="content">
             <p><strong>Rating: </strong>${restaurant.rating}</p>
+            <p><strong>Categories: </strong>${outerHTML(categoryElement)}</p>
             <p><strong>Address: </strong>${restaurant.address}</p>
             <p><strong>Overall: </strong>${restaurant.description}</p>
           </div>

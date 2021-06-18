@@ -9,44 +9,44 @@ const LikeButtonInitiator = {
     likeButtonContainer,
     restaurant,
   }) {
-    this._likeButtonContainer = likeButtonContainer;
-    this._restaurant = restaurant;
+    this.likeButtonContainer = likeButtonContainer;
+    this.restaurant = restaurant;
 
-    await this._renderButton();
+    await this.renderButton();
   },
 
-  async _renderButton() {
-    const { id } = this._restaurant;
+  async renderButton() {
+    const { id } = this.restaurant;
 
-    if (await this._isMovieExist(id)) {
-      this._renderLiked();
+    if (await this.isMovieExist(id)) {
+      this.renderLiked();
     } else {
-      this._renderLike();
+      this.renderLike();
     }
   },
 
-  async _isMovieExist(id) {
+  async isMovieExist(id) {
     const restaurant = await Database.getRestaurant(id);
     return !!restaurant;
   },
 
-  _renderLike() {
-    this._likeButtonContainer.innerHTML = createLikeButtonTemplate();
+  renderLike() {
+    this.likeButtonContainer.innerHTML = createLikeButtonTemplate();
 
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
-      await Database.putRestaurant(this._restaurant);
-      this._renderButton();
+      await Database.putRestaurant(this.restaurant);
+      this.renderButton();
     });
   },
 
-  _renderLiked() {
-    this._likeButtonContainer.innerHTML = createLikedButtonTemplate();
+  renderLiked() {
+    this.likeButtonContainer.innerHTML = createLikedButtonTemplate();
 
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
-      await Database.deleteRestaurant(this._restaurant.id);
-      this._renderButton();
+      await Database.deleteRestaurant(this.restaurant.id);
+      this.renderButton();
     });
   },
 };

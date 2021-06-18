@@ -4,14 +4,14 @@ import swRegister from './utils/sw-register';
 
 import '../styles/main.css';
 
-const button = document.getElementById('hamburger'); //drawer button
+const button = document.getElementById('hamburger');
 const drawer = document.getElementById('drawer');
 const content = document.getElementById('main-content');
 
 const app = new App({
   button,
   drawer,
-  content
+  content,
 });
 
 window.addEventListener('hashchange', () => {

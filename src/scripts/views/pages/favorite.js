@@ -23,7 +23,7 @@ const Favorite = {
     const contentContainer = document.getElementById('content_data');
     data.then((res) => {
       if (res.length < 1) {
-        contentContainer.innerHTML += `<p style="text-align: center; font-weight: bold; width: 100%; height: 100vh;">Anda Belum meiliki Restaurant Favorit.</p>`;
+        contentContainer.innerHTML += '<p style="text-align: center; font-weight: bold; width: 100%; height: 100vh;">Anda Belum meiliki Restaurant Favorit.</p>';
       } else {
         res.forEach((favorite) => {
           contentContainer.innerHTML += restaurantCard(favorite);
